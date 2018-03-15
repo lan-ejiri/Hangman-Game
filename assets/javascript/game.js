@@ -9,26 +9,19 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 
 //function: computer chooses a random letter
 function chooseWord() {
-
     computerWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-
     //print to log just in case
     console.log(computerWord);
-    console.log(computerWord.length);
-
     return computerWord;
 };
 
 
 //sets up the blanks
 function blanksarray(word) {
-
     var blanksArray = [];
-
     for (var i = 0; i < word.length; i++) {
         blanksArray.push("_");
     };
-
     return blanksArray;
 };
 
@@ -38,21 +31,20 @@ document.onkeyup = function(event) {
 
  // Determines which key was pressed.
     keyPress = event.key.toLowerCase();
-    console.log(keyPress);
 
-    //if press is space
+    //if press is space, pick a new word
     if(keyPress == " "){
         chosenWord = chooseWord();
         arrayForWord = blanksarray(chosenWord);
-        console.log(arrayForWord);
+        var arr1 = arrayForWord.join(' ');
         document.getElementById("guesses").innerHTML = " ";
-        document.getElementById("blanks").innerHTML = arrayForWord ;
+        document.getElementById("blanks").innerHTML = arr1 ;
     }
 
-
-    //if press is letter
+    //if press is a valid letter
     else if (alphabet.includes(keyPress)) {
 
+        //if letter is in the word:
         if (chosenWord.includes(keyPress)){ 
             alert("correct");  
 
@@ -81,8 +73,11 @@ document.onkeyup = function(event) {
     
         }
 
+        //if valid letter is not in the word
         else {
             alert("sorry that letter is not in this word"); document.getElementById("guesses").innerHTML+= keyPress + " " ;
+            guessesleft = guessesleft - 1;
+            document.getElementById("guessesleft").innerHTML = guessesleft;
         }
     }
 
