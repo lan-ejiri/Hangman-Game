@@ -1,5 +1,5 @@
 //define default variables
-var wordBank = ["pizza", "hamburger", "hotdog","soda", "tacos"];
+var wordBank = ["pizza", "hamburger", "hotdog","soda", "tacos", "fries", "nuggets", "wings"];
 var wins = 0;
 var losses = 0;
 var guessesleft = 5;
@@ -92,7 +92,7 @@ document.onkeyup = function(event) {
         }
 
         if (guessesleft <= 0) {
-        alert("Sorry you ran out of guesses, you lose! Press Space to play again!");
+        alert("Sorry you ran out of guesses. The correct word was: " + chosenWord + " Press Space to play again!");
         losses++;
         chosenWord = "";
         document.getElementById("losses").innerHTML = losses;
