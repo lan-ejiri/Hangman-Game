@@ -48,6 +48,7 @@ document.onkeyup = function(event) {
         if (chosenWord.includes(keyPress)){ 
             alert("correct");  
 
+
             //turns the chosen word into an array
             var chosenWordAsArray = chosenWord.split("");
             var arr2 = chosenWordAsArray.join(' ');
